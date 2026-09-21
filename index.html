@@ -43,7 +43,7 @@
     padding:0 24px;
   }
 
-  /* ---------- Reveal on scroll ---------- */
+ 
   .reveal{
     opacity:0;
     filter:blur(6px);
@@ -53,7 +53,7 @@
   .reveal.in{ opacity:1; transform:translateY(0) scale(1); filter:blur(0); }
   .reveal-stagger.in > *{ transition-delay: calc(var(--i) * 90ms); }
 
-  /* scroll progress */
+  
   .progress-bar{
     position:fixed; top:0; left:0; height:3px; width:0%;
     background:linear-gradient(90deg, var(--tomato), var(--gold));
@@ -64,7 +64,7 @@
     *{ animation-duration:.001s !important; animation-iteration-count:1 !important; transition-duration:.001s !important; }
   }
 
-  /* ---------- NAV ---------- */
+  
   header.nav{
     position:sticky; top:0; z-index:50;
     background:rgba(21,43,30,0.92);
@@ -115,7 +115,7 @@
   }
   .menu-toggle{ display:none; }
 
-  /* ---------- HERO ---------- */
+ 
   .hero{
     position:relative;
     background:
@@ -167,7 +167,7 @@
   .meta-item .num{ font-family:'Space Mono', monospace; font-size:1.4rem; color:var(--gold); }
   .meta-item .lbl{ font-size:0.74rem; color:var(--cream-dim); letter-spacing:0.06em; text-transform:uppercase; margin-top:2px; }
 
-  /* Basket illustration */
+  
   .basket-wrap{ position:relative; height:420px; }
   .basket{
     position:absolute; left:50%; bottom:20px; transform:translateX(-50%);
@@ -208,7 +208,7 @@
   }
   @keyframes breathe{ 0%,100%{ transform:scale(1);} 50%{ transform:scale(1.08);} }
 
-  /* ---------- ticker ---------- */
+  
   .ticker-band{
     background:var(--gold); color:var(--ink);
     overflow:hidden; white-space:nowrap; padding:12px 0;
@@ -223,7 +223,7 @@
   .ticker-track span::before{ content:'•'; color:var(--tomato); }
   @keyframes ticker{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
 
-  /* ---------- SECTIONS ---------- */
+ 
   section{ padding:96px 0; }
   .section-tag{
     font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.18em;
@@ -231,7 +231,7 @@
   }
   .section-title{ font-size:clamp(1.8rem, 3.4vw, 2.6rem); font-weight:600; max-width:640px; }
 
-  /* ABOUT */
+  
   .about-grid{
     margin-top:48px;
     display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:start;
@@ -269,7 +269,7 @@
 
   .tilt-card{ transition:transform .15s ease-out, box-shadow .25s ease; will-change:transform; }
 
-  /* REVIEWS */
+  
   .reviews-band{ background:var(--green-deep); color:var(--cream); position:relative; overflow:hidden; }
   .reviews-band::before{
     content:''; position:absolute; inset:0;
@@ -319,7 +319,7 @@
   .mini-receipt .name{ font-family:'Space Mono',monospace; font-weight:700; margin-top:8px; font-size:0.82rem; }
   .mini-receipt .role{ font-size:0.74rem; color:#6b6a5c; margin-top:2px; }
 
-  /* LOCATION */
+  
   .loc-grid{ margin-top:48px; display:grid; grid-template-columns:0.9fr 1.1fr; gap:40px; align-items:center; }
   .map-card{
     background-image:var(--location-bg);
@@ -356,7 +356,7 @@
     font-family:'Space Mono',monospace; font-size:0.78rem; margin-bottom:18px;
   }
 
-  /* CONTACT */
+  
   .contact-band{
     background:linear-gradient(180deg, var(--green-mid), var(--green-deep));
     color:var(--cream);
@@ -550,13 +550,13 @@
       'https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlQiAycdSipgZuedsNhmAtPtYJQLEfiZ5hf3KbD74gSQr74VD7-VVi6oXcWdIfQ7pI96B2mRUc_dnFWtiwXLq7kFMlpfJIYS4QSTA81QowB7z8KKh6OHnad2Xw065rs98EHu4wD=s680-w680-h510-rw'
     ];
 
-    // Replace all <img> sources with provided URLs in rotation
+    
     const imgs = Array.from(document.querySelectorAll('img'));
     imgs.forEach((img, i) => {
       try { img.src = urls[i % urls.length]; } catch (e){}
     });
 
-    // Update CSS variables that used embedded images
+    
     try {
       document.documentElement.style.setProperty('--reviews-bg', `url("${urls[0]}")`);
       document.documentElement.style.setProperty('--location-bg', `url("${urls[1]}")`);
@@ -623,7 +623,7 @@
 <script>
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Reveal on scroll, staggered by index within each parent
+  
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
@@ -638,7 +638,7 @@
     io.observe(el);
   });
 
-  // Scroll progress bar + nav shrink
+  
   const progressBar = document.getElementById('progressBar');
   const nav = document.getElementById('siteNav');
   window.addEventListener('scroll', ()=>{
@@ -648,7 +648,7 @@
     nav.classList.toggle('scrolled', h.scrollTop > 20);
   }, { passive:true });
 
-  // Subtle mouse parallax on the hero basket
+  
   if(!reduceMotion){
     const basketWrap = document.querySelector('.basket-wrap');
     const basket = document.querySelector('.basket');
@@ -667,7 +667,7 @@
       });
     }
 
-    // 3D tilt on receipt / contact cards
+    
     document.querySelectorAll('.tilt-card').forEach(card=>{
       card.addEventListener('mousemove', (e)=>{
         const r = card.getBoundingClientRect();
